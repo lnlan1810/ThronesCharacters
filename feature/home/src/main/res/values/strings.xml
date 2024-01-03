@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="character_first_name">First name: %s</string>
+    <string name="character_last_name">Last name: %s</string>
+    <string name="character_full_name">Full name: %s</string>
+    <string name="character_title">Title: %s</string>
+    <string name="character_family">Family: %s</string>
+
+    <string name="characters_error_fetching">Sorry, something went wrong when fetching characters</string>
+    <string name="characters_error_refreshing">Sorry, something went wrong when refreshing characters</string>
+
+    <string name="character_image_content_description">Character image</string>
+
+    <string name="character_detail_error_fetching">Sorry, something went wrong when fetching character details</string>
+</resources>
