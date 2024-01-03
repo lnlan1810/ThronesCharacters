@@ -21,7 +21,6 @@ import com.example.gamecharacters.home.R
 import com.example.gamecharacters.ui.Typography
 import com.example.gamecharacters.home.presentation.model.CharacterDisplayable
 
-
 @Composable
 fun CharacterDetails(
     character: CharacterDisplayable,

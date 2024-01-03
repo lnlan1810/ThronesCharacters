@@ -1,13 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-include(":feature:find")
-
-
-include(":feature:profile")
-
-
-include(":feature:setting")
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -15,6 +7,21 @@ pluginManagement {
         mavenCentral()
     }
 }
+
+plugins {
+    id("org.gradle.toolchains.foojay-resolver") version "0.4.0"
+}
+
+toolchainManagement {
+    jvm {
+        javaRepositories {
+            repository("foojay") {
+                resolverClass.set(org.gradle.toolchains.foojay.FoojayToolchainResolver::class.java)
+            }
+        }
+    }
+}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -33,8 +40,9 @@ include(":core:network")
 include(":core:designsystem")
 
 include(":feature:home")
-
-
+include(":feature:find")
+include(":feature:profile")
+include(":feature:setting")
 
 
  

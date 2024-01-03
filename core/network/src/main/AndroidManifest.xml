@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application>
+    <!--<application>
         <activity
             android:name="com.example.gamecharacters.MainActivity"
             android:exported="true"
@@ -17,6 +17,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
+    </application>-->
 
 </manifest>
