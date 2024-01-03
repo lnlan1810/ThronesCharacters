@@ -1,12 +1,14 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
+    //alias(libs.plugins.androidApplication)
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.detekt)
     alias(libs.plugins.junit)
-    alias(libs.plugins.kotlin.kapt)
+   // alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.ktlint)
-    alias(libs.plugins.hilt)
+   // alias(libs.plugins.hilt)
+
 }
 
 android {
@@ -69,7 +71,7 @@ dependencies {
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.material3)
-    implementation(libs.hilt)
+   // implementation(libs.hilt)
     implementation(libs.kotlin.coroutines)
     implementation(libs.kotlin.serialization)
     implementation(libs.kotlin.serialization.converter)
@@ -78,8 +80,10 @@ dependencies {
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.retrofit)
     implementation(libs.timber)
-
-    kapt(libs.hilt.compiler)
+    testImplementation(libs.bundles.common.test)
+    androidTestImplementation(libs.bundles.common.android.test)
+    //kaptAndroidTest(libs.test.android.hilt.compiler)
+    //kapt(libs.hilt.compiler)
 
     detektPlugins(libs.detekt.compose.rules)
 }

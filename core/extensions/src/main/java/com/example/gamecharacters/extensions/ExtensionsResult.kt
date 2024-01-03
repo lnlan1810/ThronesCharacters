@@ -10,7 +10,5 @@ inline fun <R> resultOf(block: () -> R): Result<R> {
         Result.failure(t)
     } catch (c: CancellationException) {
         throw c
-    } catch (e: Exception) {
-        Result.failure(e)
     }
 }

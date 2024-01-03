@@ -1,13 +1,17 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
+   // alias(libs.plugins.androidApplication)
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.detekt)
     alias(libs.plugins.junit)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.hilt)
+
 }
 
 android {
@@ -18,7 +22,7 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+       // consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -52,9 +56,15 @@ android {
         )
         jvmTarget = JavaVersion.VERSION_17.toString()
     }
+
+    packagingOptions {
+        resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+    }
 }
 
 dependencies {
+
+    implementation(project(":core:designsystem"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.appcompat)
@@ -66,6 +76,13 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.accompanist.swipe.refresh)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.ui.tooling)
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+    implementation(libs.navigation.hilt)
+
     implementation(libs.kotlin.coroutines)
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.navigation)
