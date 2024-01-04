@@ -1,5 +1,5 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
+    //alias(libs.plugins.androidApplication)
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.detekt)
@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.hilt)
+
 }
 
 android {
@@ -46,7 +47,7 @@ android {
             "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
             "-opt-in=kotlinx.serialization.ExperimentalSerializationApi"
         )
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = "17"
     }
 
     composeOptions {
@@ -59,25 +60,18 @@ dependencies {
     implementation(project(":core:navigation"))
     implementation(project(":core:extensions"))
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.appcompat)
     implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.material3)
     implementation(libs.hilt)
     implementation(libs.kotlin.coroutines)
-    implementation(libs.kotlin.serialization)
-    implementation(libs.kotlin.serialization.converter)
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.navigation)
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.retrofit)
     implementation(libs.timber)
-
+    kaptAndroidTest(libs.test.android.hilt.compiler)
     kapt(libs.hilt.compiler)
 
     detektPlugins(libs.detekt.compose.rules)

@@ -4,5 +4,6 @@
     <string name="find_screen">Find</string>
     <string name="setting_screen">Setting</string>
     <string name="profile_screen">Profile</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>

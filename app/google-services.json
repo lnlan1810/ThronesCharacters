@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "535985664131",
+    "project_id": "gamecharacters-73f3a",
+    "storage_bucket": "gamecharacters-73f3a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535985664131:android:cd50dbe324009b64b5ebb6",
+        "android_client_info": {
+          "package_name": "com.example.gamecharacters"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8sQWOLg2Y3mqqPc20l-6HldrDPzQGUeQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
