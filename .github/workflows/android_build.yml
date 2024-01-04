@@ -13,20 +13,21 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
-          
+
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-
-      - name: Execute Gradle command - assembleDebug
-        run: ./gradlew assembleDebug
-
-      - name: Upload Artifact to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
+      - name: Run unit tests
+        uses: gradle/gradle-build-action@v2
         with:
-          appId: ${{ secrets.APP_ID }}
-          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE }}
-          groups: testers
-          file: app/build/outputs/apk/debug/app-debug.apk
+          arguments: app:testDebugUnitTest feature:home:testDebugUnitTest --stacktrace
+
+      - name: Assemble app
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: assembleDebug --stacktrace
+
+      - name: Run Detekt
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: detekt
