@@ -1,25 +1,18 @@
-name: Deploy to Firebase
+name: Android Build
 
-on:
-  workflow_dispatch:
-    inputs:
-      release_notes:
-        type: string
-        required: true
-        default: 'Manual Debug Build'
-        description: 'Release Notes'
+on: pull_request
 
 jobs:
   build:
-    name: Building and distributing app
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
-      - uses: actions/setup-java@v3
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v1
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          java-version: 17
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
@@ -30,11 +23,10 @@ jobs:
       - name: Execute Gradle command - assembleDebug
         run: ./gradlew assembleDebug
 
-      - name: Upload Artifact to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
+      - name: upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
         with:
-          appId: ${{ secrets.APP_ID }}
-          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE }}
+          appId: ${{secrets.APP_ID}}
+          token: ${{secrets.FIREBASE_TOKEN}}
           groups: testers
           file: app/build/outputs/apk/debug/app-debug.apk
-          releaseNotes: ${{ inputs.release_notes }}
