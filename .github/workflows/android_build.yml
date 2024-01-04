@@ -18,11 +18,21 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
+      - name: Run unit tests
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: feature:home:testDebugUnitTest --stacktrace
+
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
       - name: Execute Gradle command - assembleDebug
         run: ./gradlew assembleDebug
+        
+      - name: Run Detekt
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: detekt
 
       - name: Upload artifact to Firebase App Distribution
         run: |
@@ -30,4 +40,3 @@ jobs:
           firebase --version
           firebase appdistribution:distribute app/build/outputs/apk/debug/app-debug.apk --app ${{ secrets.APP_ID }} --token ${{ secrets.FIREBASE_TOKEN }} --groups testers
       
-
