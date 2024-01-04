@@ -1,6 +1,5 @@
 package com.example.gamecharacters.home.presentation.characterDetail
 
-
 import androidx.lifecycle.SavedStateHandle
 import com.example.gamecharacters.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -48,11 +47,13 @@ class CharacterDetailViewModel @Inject constructor(
             isLoading = true,
             isError = false
         )
+
         is CharacterDetailUiState.PartialState.Fetched -> previousState.copy(
             isLoading = false,
             character = partialState.character,
             isError = false
         )
+
         is CharacterDetailUiState.PartialState.Error -> previousState.copy(
             isLoading = false,
             isError = true

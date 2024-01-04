@@ -2,6 +2,10 @@ package com.example.gamecharacters
 
 import android.app.Application
 import com.example.gamecharacters.network.BuildConfig
+import com.google.firebase.FirebaseApp
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.perf.FirebasePerformance
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
@@ -14,5 +18,12 @@ class MainApplication : Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+        FirebaseApp.initializeApp(this)
+
+        val crashlytics = FirebaseCrashlytics.getInstance()
+        crashlytics.setCrashlyticsCollectionEnabled(true)
+
+        val performance = FirebasePerformance.getInstance()
+        performance.isPerformanceCollectionEnabled = true
     }
 }

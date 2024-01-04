@@ -1,6 +1,5 @@
 package com.example.gamecharacters.home.data.repository
 
-
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
@@ -41,7 +40,7 @@ class CharacterRepositoryImpl @Inject constructor(
             }
     }
 
-    override fun getCharacter(characterId: String):  Flow<Character> {
+    override fun getCharacter(characterId: String): Flow<Character> {
         return characterDao
             .getCharacter(characterId)
             .map { it.toDomainModel() }
