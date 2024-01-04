@@ -13,6 +13,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
+      
+      - run: npm install -g firebase-tools
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
