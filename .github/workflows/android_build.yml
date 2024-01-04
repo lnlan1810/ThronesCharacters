@@ -1,6 +1,13 @@
-name: Android Build
+name: Deploy to Firebase
 
-on: pull_request
+on:
+  workflow_dispatch:
+    inputs:
+      release_notes:
+        type: string
+        required: true
+        default: 'Manual Debug Build'
+        description: 'Release Notes'
 
 jobs:
   build:
@@ -28,5 +35,6 @@ jobs:
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          groups: testers2
+          groups: testers
           file: app/build/outputs/apk/debug/app-debug.apk
+          releaseNotes: ${{ inputs.release_notes }}
