@@ -1,6 +1,5 @@
 package com.example.gamecharacters.home.data.di
 
-
 import com.example.gamecharacters.home.data.remote.api.ThronesApi
 import com.example.gamecharacters.home.data.repository.CharacterRepositoryImpl
 import com.example.gamecharacters.home.domain.repository.CharacterRepository
