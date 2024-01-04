@@ -14,7 +14,6 @@ private const val RETRY_TIME_IN_MILLIS = 15_000L
 
 fun interface GetCharactersUseCase : () -> Flow<Result<List<Character>>>
 
-
 fun getCharacters(
     characterRepository: CharacterRepository
 ): Flow<Result<List<Character>>> =

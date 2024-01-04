@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Game Characters</string>
+    <string name="home_screen">Home</string>
+    <string name="find_screen">Find</string>
+    <string name="setting_screen">Setting</string>
+    <string name="profile_screen">Profile</string>
+
+</resources>
