@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.hilt)
-
 }
 
 android {
