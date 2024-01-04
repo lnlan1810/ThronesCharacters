@@ -1,5 +1,5 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
+    //alias(libs.plugins.androidApplication)
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.detekt)
@@ -18,7 +18,7 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+        //consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -35,10 +35,8 @@ android {
         compose = true
     }
 
-    compileOptions {
-        isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+    kotlin {
+        jvmToolchain(17)
     }
 
     composeOptions {
@@ -50,7 +48,6 @@ android {
             "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
             "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
         )
-        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
 }
@@ -61,13 +58,12 @@ dependencies {
     implementation(project(":core:navigation"))
     implementation(project(":core:extensions"))
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.appcompat)
+    //implementation(libs.androidx.core.ktx)
+    //implementation(libs.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
+   // androidTestImplementation(libs.androidx.espresso.core)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.accompanist.swipe.refresh)
     implementation(libs.coil)
@@ -81,12 +77,10 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.room)
     implementation(libs.timber)
-    implementation(libs.lifecycle.runtime.compose)
-
-
     kapt(libs.hilt.compiler)
-    //kaptAndroidTest(libs.test.android.hilt.compiler)
-
+    kaptAndroidTest(libs.test.android.hilt.compiler)
+    testImplementation(libs.bundles.common.test)
+    androidTestImplementation(libs.bundles.common.android.test)
     coreLibraryDesugaring(libs.desugar)
 
     detektPlugins(libs.detekt.compose.rules)

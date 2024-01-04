@@ -1,11 +1,15 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
+    //alias(libs.plugins.androidApplication)
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.detekt)
     alias(libs.plugins.junit)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -16,7 +20,7 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+        //consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -48,7 +52,10 @@ android {
             "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
             "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
         )
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = "17"
+    }
+    packagingOptions {
+        resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
     }
 }
 
@@ -57,23 +64,39 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:navigation"))
     implementation(project(":core:extensions"))
+    implementation(project(":feature:setting"))
+    implementation(project(":feature:home"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.appcompat)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.material)
+
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.accompanist.swipe.refresh)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.ui.tooling)
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+    implementation(libs.navigation.hilt)
     implementation(libs.kotlin.coroutines)
-    implementation(libs.kotlin.serialization)
-    implementation(libs.kotlin.serialization.converter)
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.navigation)
-    implementation(libs.okhttp.logging.interceptor)
+    implementation(libs.kotlin.serialization)
     implementation(libs.retrofit)
+    implementation(libs.retrofit.converter)
+    implementation(libs.codepath)
+    implementation(libs.room)
+    implementation(libs.coil)
+
     implementation(libs.timber)
+    implementation(libs.lifecycle.runtime.compose)
+    coreLibraryDesugaring(libs.desugar)
 
     detektPlugins(libs.detekt.compose.rules)
+
 }
