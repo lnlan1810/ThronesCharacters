@@ -53,6 +53,7 @@ class CharactersViewModel @Inject constructor(
             isLoading = false,
             isError = true
         )
+
     }
 
     private fun getCharacters(): Flow<CharactersUiState.PartialState> = flow {

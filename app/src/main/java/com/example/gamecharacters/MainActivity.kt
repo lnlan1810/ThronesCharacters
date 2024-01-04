@@ -1,24 +1,26 @@
 package com.example.gamecharacters
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.gamecharacters.find.FindScreen
+import com.example.gamecharacters.find.composable.FindScreen
+import com.example.gamecharacters.navigation.BottomNavigationBar
+import com.example.gamecharacters.navigation.HomeNavigation
 import com.example.gamecharacters.navigation.NavigationFactory
 import com.example.gamecharacters.navigation.NavigationManager
-import com.example.gamecharacters.navigation.createExternalRouter
 import com.example.gamecharacters.profile.ProfileScreen
-import com.example.gamecharacters.setting.SettingScreen
+import com.example.gamecharacters.setting.SettingsScreen
 import com.example.gamecharacters.ui.ThronesTheme
+import com.example.gamecharacters.ui.darkModeState
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -30,12 +32,17 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var navigationManager: NavigationManager
 
+    @SuppressLint("StateFlowValueCalledInComposition")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
-            ThronesTheme {
+            val darkModeState by darkModeState.collectAsStateWithLifecycle()
+
+            ThronesTheme(darkTheme = darkModeState) {
                 val navigationController = rememberNavController()
                 val navController = rememberNavController()
+
                 Scaffold(
                     bottomBar = {
                         BottomNavigationBar(navController = navController)
@@ -50,13 +57,13 @@ class MainActivity : ComponentActivity() {
                             HomeNavigation(navigationController, navigationFactories, navigationManager)
                         }
                         composable(Screen.Find.route) {
-                            FindScreen(navController)
+                            FindScreen()
                         }
                         composable(Screen.Settings.route) {
-                            SettingScreen(navController)
+                                SettingsScreen()
                         }
                         composable(Screen.Profile.route) {
-                            ProfileScreen(navController)
+                            ProfileScreen()
                         }
                     }
                 }
@@ -64,3 +71,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+

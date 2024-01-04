@@ -1,4 +1,3 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.jetbrainsKotlinAndroid) apply false
@@ -11,6 +10,7 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.ktlint) apply false
     alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.google.services) apply false
 }
 
 allprojects {
@@ -21,9 +21,18 @@ allprojects {
     detekt {
         buildUponDefaultConfig = true
         config = files("$rootDir/gradle/detekt.yml")
+
     }
+
 }
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
+
+/*
+buildscript {
+    dependencies{
+        classpath(libs.)
+    }
+}*/
