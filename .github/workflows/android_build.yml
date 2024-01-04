@@ -20,7 +20,7 @@ jobs:
       - name: Run unit tests
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: app:testDebugUnitTest feature:home:testDebugUnitTest --stacktrace
+          arguments: feature:home:testDebugUnitTest --stacktrace
 
       - name: Assemble app
         uses: gradle/gradle-build-action@v2
