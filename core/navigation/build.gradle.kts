@@ -1,5 +1,5 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
+    //alias(libs.plugins.androidApplication)
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.detekt)
@@ -46,7 +46,7 @@ android {
             "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
             "-opt-in=kotlinx.serialization.ExperimentalSerializationApi"
         )
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = "17"
     }
 
     composeOptions {
@@ -67,6 +67,8 @@ dependencies {
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.material)
+
     implementation(libs.hilt)
     implementation(libs.kotlin.coroutines)
     implementation(libs.kotlin.serialization)
@@ -76,7 +78,9 @@ dependencies {
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.retrofit)
     implementation(libs.timber)
-
+    testImplementation(libs.bundles.common.test)
+    androidTestImplementation(libs.bundles.common.android.test)
+    kaptAndroidTest(libs.test.android.hilt.compiler)
     kapt(libs.hilt.compiler)
 
     detektPlugins(libs.detekt.compose.rules)

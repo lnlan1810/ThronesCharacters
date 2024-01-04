@@ -18,7 +18,6 @@ import com.example.gamecharacters.home.presentation.characterDetail.CharacterDet
 import com.example.gamecharacters.home.presentation.characterDetail.CharacterDetailViewModel
 import com.example.gamecharacters.navigation.AppBarState
 
-
 const val CHARACTER_LOADING_TEST_TAG = "characterLoadingTestTag"
 
 @Composable
