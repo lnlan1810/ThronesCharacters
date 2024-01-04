@@ -17,8 +17,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-          cache: 'npm'
+          node-version: '18.12.1'
           
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
