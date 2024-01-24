@@ -1,7 +1,7 @@
 Мультимодульное приложение с разделением на 3 основных типа:
-—app
-—core
-—feature
+— App
+— Core
+— Feature
 
 API: https://thronesapi.com/ 
 Приложение подключается к API персонажей Игры престолов, чтобы получить список персонажей Игры престолов.
@@ -15,10 +15,9 @@ API: https://thronesapi.com/
 - Retrofit + okhttp
 - Hilt 
 - Coil
-- GitHub Actions - для CI/CD
 - Detekt 
 
-Cicd:
+Cicd (GitHub Actions):
 — запуск детекта
 — запуск юниттестов
 — загрузка билда на firebase app distribution
