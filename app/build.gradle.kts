@@ -7,8 +7,9 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.google.services)
-    alias (libs.plugins.firebase.crashlytics)
-    alias (libs.plugins.firebase.performance)
+    alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.firebase.performance)
+    alias(libs.plugins.firebase.appdistribution)
 }
 
 android {
