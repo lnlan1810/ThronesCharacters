@@ -18,13 +18,13 @@ API: https://thronesapi.com/
 - Detekt 
 
 Cicd (GitHub Actions):
-- запуск детекта 
-- запуск юниттестов
-- загрузка билда на firebase app distribution
+-  Запуск детекта 
+-  Запуск юниттестов
+-  Загрузка билда на firebase app distribution
 
-- подключить проект к firebase: analytics, crashlytics, performance, notifications
+Подключить проект к firebase: analytics, crashlytics, performance, notifications.
 
-- написать юнит-тесты на use-case
+Написать юнит-тесты на use-case.
 
-- версионирование зависимостей через toml файл
+Версионирование зависимостей через toml файл.
 
