@@ -1,30 +1,50 @@
-Мультимодульное приложение с разделением на 3 основных типа:
-- App 
-- Core
-- Feature
-  
-API: https://thronesapi.com/ 
-Приложение подключается к API персонажей Игры престолов, чтобы получить список персонажей Игры престолов.
+# Game of Thrones Characters App
 
-Чистая архитектура с шаблоном MVI на уровне представления
+A modular Android application that fetches characters from the [Thrones API](https://thronesapi.com/) using a clean architecture and MVI pattern.
 
-Библиотеки использовала:
-- Compose
-- Kotlin Coroutines & Kotlin Flow
-- Room
-- Retrofit + okhttp
-- Hilt 
-- Coil
-- Detekt 
+## 🧱 Project Structure
 
-Cicd (GitHub Actions):
--  Запуск детекта 
--  Запуск юниттестов
--  Загрузка билда на firebase app distribution
+- **App**: Entry point, DI setup, navigation
+- **Core**: Shared utilities (network, database, models)
+- **Feature**: Screen-specific logic (UI, ViewModel, UseCases)
 
-Подключить проект к firebase: analytics, crashlytics, performance, notifications.
+## 🔧 Tech Stack
 
-Написать юнит-тесты на use-case.
+- **UI**: Jetpack Compose  
+- **Architecture**: MVI + Clean Architecture  
+- **DI**: Hilt  
+- **Async**: Kotlin Coroutines, Flow  
+- **Networking**: Retrofit, OkHttp  
+- **Image Loading**: Coil  
+- **Persistence**: Room  
+- **Code Quality**: Detekt  
+- **CI/CD**: GitHub Actions  
+  - Lint with Detekt  
+  - Run unit tests  
+  - Upload build to Firebase App Distribution  
+- **Firebase**:  
+  - Analytics  
+  - Crashlytics  
+  - Performance Monitoring  
+  - Notifications  
 
-Версионирование зависимостей через toml файл.
+## ✅ Testing
+
+- Unit tests written for UseCases
+
+## 📦 Dependency Management
+
+- All dependencies versioned using `libs.versions.toml` file
+
+## 🚀 Getting Started
+
+1. Clone the repo  
+2. Add your `google-services.json`  
+3. Build & run!
+
+## 🔗 API
+
+- [Thrones API](https://thronesapi.com/)
+
+---
 
